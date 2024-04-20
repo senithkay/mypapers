@@ -202,13 +202,29 @@ function Page() {
 
           <div className='max-w-md w-full rounded-none md:rounded-2xl  md:p-8 shadow-input bg-white dark:bg-black'>
             <h2 className='font-bold text-xl text-neutral-800 dark:text-neutral-200'>
-              Tell us about the paper
+              Time to create the questions
             </h2>
             <p className='text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300'>
-              This template requires the following information to continue
+              Provide questions and there ansers here
             </p>
 
-            <FormBuilder formDef={formDefBuilder.getComponent()} />
+            <div className=' w-full  flex flex-col justify-center items-center gap-3 my-10'>
+              <p className=' text-black text-center'>
+                You can create your own questions here
+              </p>
+              <button className=' w-[100px] bg-blue-600 rounded-full mx-[20px] h-[30px] '>
+                Create
+              </button>
+            </div>
+
+            <div className=' w-full  flex flex-col justify-center items-center gap-3 my-4'>
+              <p className=' text-black text-center'>
+                You can automatically generate questions based on the subject
+              </p>
+              <button className=' w-[100px] bg-blue-600 rounded-full mx-[20px] h-[30px] '>
+                Generate
+              </button>
+            </div>
           </div>
 
           {/* step 04*/}

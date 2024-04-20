@@ -41,8 +41,6 @@ export class FormComponentBuilder {
   formComponents: FormComponents[] = [];
 
   constructor(formComponents: any[]) {
-    console.log("aa");
-    console.log(formComponents);
     formComponents.forEach((element) => {
       let formComponent: FormComponents = new FormComponents();
       if (element.columnID !== undefined) {
@@ -72,7 +70,6 @@ export class ColumnChildBuilder {
       if (FormHelper.isField(child)) {
         columnChild = this.FieldBuilder(child);
       } else {
-        console.log(child);
         columnChild = this.formDefBuilder(child);
       }
       this.columnChild.push(columnChild);
