@@ -1,6 +1,7 @@
 "use client";
 import { NavbarComponent } from "@/components/NavBarComponent";
 import { HoverEffect } from "@/components/hover-effect-grid";
+import Button from "@mui/material/Button";
 import React, { useState } from "react";
 
 export default function Home() {
@@ -25,11 +26,14 @@ export default function Home() {
             <input
               type='text'
               placeholder='Type your school or institute name'
-              className=' h-[30px] rounded-full w-[300px] px-[10px] border-solid border-gray-300 border-2 '
+              className=' h-[30px] rounded-md w-[300px] px-[10px] border-solid border-gray-300 border-2 '
             />
-            <button className=' w-[100px] bg-blue-600 rounded-full mx-[20px] h-[30px] '>
+            <Button
+              className='bg-blue-600 my-auto h-[30px] ml-2'
+              variant='contained'
+            >
               Search
-            </button>
+            </Button>
           </form>
         </div>
         <div className=' border-solid border-gray-300 border-2  w-full  my-[50px] rounded-3xl'>

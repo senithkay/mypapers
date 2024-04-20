@@ -179,7 +179,11 @@ function Page() {
                 >
                   Undo
                 </Button>
-                <Button className='bg-blue-600 my-auto' variant='contained'>
+                <Button
+                  className='bg-blue-600 my-auto'
+                  variant='contained'
+                  onClick={handleNext}
+                >
                   Next
                 </Button>
               </div>
