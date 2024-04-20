@@ -1,6 +1,7 @@
 import { cn } from "@/utils";
 import { useState } from "react";
 import { Menu, MenuItem, ProductItem, HoveredLink } from "./navbar-component";
+import Button from "@mui/material/Button";
 
 export function NavbarComponent({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
@@ -66,10 +67,15 @@ export function NavbarComponent({ className }: { className?: string }) {
         </MenuItem>
       </Menu>
       <div>
-        <button className=' w-[100px]  border-black rounded-full text-blue-600'>
-          Sign In
-        </button>
-        <button className=' w-[100px] bg-blue-600 rounded-full'>Sign Up</button>
+        <Button
+          className='bg-white hover:bg-slate-200 text-black mx-3'
+          variant='contained'
+        >
+          Sign up
+        </Button>
+        <Button className='bg-blue-600' variant='contained'>
+          Sign up
+        </Button>
       </div>
     </div>
   );

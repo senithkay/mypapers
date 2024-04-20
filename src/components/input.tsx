@@ -50,7 +50,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
            group-hover/input:shadow-none transition duration-400
            `,
             className,
-            "border-solid border-gray-300 border-2"
+            "border-solid border-gray-300 border-2 text-gray-500"
           )}
           ref={ref}
           {...props}

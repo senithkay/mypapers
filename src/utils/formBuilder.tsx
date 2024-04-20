@@ -12,7 +12,7 @@ import { FormHelper } from "./formDefinition";
 function FormBuilder(props: { formDef: FormDefinition }) {
   const formdef: FormDefinition = props.formDef;
 
-  function renderFormComponents(formdef: FormDefinition) {
+  function renderFormComponents(formdef: FormDefinition, isChild: boolean) {
     return (
       <>
         {formdef.formComponents.map((element) => {
@@ -20,6 +20,9 @@ function FormBuilder(props: { formDef: FormDefinition }) {
             <div
               key={element.columnID}
               id={`form${formdef.formId}-column${element.columnID}`}
+              className={` w-full p-2 rounded-2xl ${
+                !isChild ? "border-solid border-gray-300 border-2" : ""
+              }`}
             >
               {element.children.map((columnChild) => {
                 if (FormHelper.isField(columnChild)) {
@@ -44,7 +47,9 @@ function FormBuilder(props: { formDef: FormDefinition }) {
                 } else {
                   const child = columnChild as FormDefinition;
                   return (
-                    <div className='flex'>{renderFormComponents(child)}</div>
+                    <div className='flex'>
+                      {renderFormComponents(child, true)}
+                    </div>
                   );
                 }
               })}
@@ -58,10 +63,10 @@ function FormBuilder(props: { formDef: FormDefinition }) {
   return (
     <form
       id={`form${formdef.formId}`}
-      className=' pt-[30px] flex'
+      className=' pt-[30px]'
       onSubmit={() => {}}
     >
-      {renderFormComponents(formdef)}
+      {renderFormComponents(formdef, false)}
     </form>
   );
 }
