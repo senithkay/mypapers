@@ -26,9 +26,11 @@ const Transition = React.forwardRef(function Transition(
 export default function FullScreenDialog({
   title,
   child,
+  onSubmit,
 }: {
   title: string;
   child: React.ReactNode;
+  onSubmit: () => any;
 }) {
   const [open, setOpen] = React.useState(false);
 
@@ -37,6 +39,7 @@ export default function FullScreenDialog({
   };
 
   const handleClose = () => {
+    onSubmit();
     setOpen(false);
   };
 

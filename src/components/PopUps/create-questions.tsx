@@ -1,72 +1,10 @@
 import FormBuilder from "@/utils/formBuilder";
-import { FormDefBuilder } from "@/utils/formDefinition";
+import { FormComponents, FormDefBuilder } from "@/utils/formDefinition";
 import Button from "@mui/material/Button";
-import React from "react";
-const formDefBuilder = new FormDefBuilder({
-  formId: 1,
-  formComponents: [
-    {
-      columnID: 1,
-      children: [
-        {
-          fieldID: 1,
-          label: "Question 01",
-          type: "type",
-          id: "id",
-          placeHolder: "Enter question 01",
-        },
-        {
-          formId: 1,
-          formComponents: [
-            {
-              columnID: 1,
-              children: [
-                {
-                  fieldID: 2,
-                  label: "Answer 01",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 01",
-                },
-                {
-                  fieldID: 2,
-                  label: "Answer 03",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 03",
-                },
-              ],
-            },
+import React, { useState } from "react";
 
-            {
-              columnID: 2,
-              children: [
-                {
-                  fieldID: 2,
-                  label: "Answer 02",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 02",
-                },
-                {
-                  fieldID: 2,
-                  label: "Answer 04",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 04",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-});
-
-const createQuestionFormBuilder = new FormDefBuilder({
-  formId: 1,
-  formComponents: [
+function CreateQuestion() {
+  const [questionList, setQuestionList] = useState<FormComponents[]>([
     {
       columnID: 1,
       children: [
@@ -123,13 +61,136 @@ const createQuestionFormBuilder = new FormDefBuilder({
         },
       ],
     },
-  ],
-});
+  ]);
+  const formDefBuilder = new FormDefBuilder({
+    formId: 1,
+    formComponents: questionList,
+  });
 
-function CreateQuestion() {
+  const createQuestionFormBuilder = new FormDefBuilder({
+    formId: 1,
+    formComponents: [
+      {
+        columnID: 1,
+        children: [
+          {
+            fieldID: 1,
+            label: "New question",
+            type: "type",
+            id: "id",
+            placeHolder: "Enter a question",
+          },
+          {
+            formId: 1,
+            formComponents: [
+              {
+                columnID: 1,
+                children: [
+                  {
+                    fieldID: 2,
+                    label: "Answer 01",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 01",
+                  },
+                  {
+                    fieldID: 2,
+                    label: "Answer 03",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 03",
+                  },
+                ],
+              },
+
+              {
+                columnID: 2,
+                children: [
+                  {
+                    fieldID: 2,
+                    label: "Answer 02",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 02",
+                  },
+                  {
+                    fieldID: 2,
+                    label: "Answer 04",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 04",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+
   const handleAdd = () => {
-    alert("a");
+    setQuestionList([
+      ...questionList,
+      {
+        columnID: 1,
+        children: [
+          {
+            fieldID: 1,
+            label: "New question",
+            type: "type",
+            id: "id",
+            placeHolder: "Enter a question",
+          },
+          {
+            formId: 1,
+            formComponents: [
+              {
+                columnID: 1,
+                children: [
+                  {
+                    fieldID: 2,
+                    label: "Answer 01",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 01",
+                  },
+                  {
+                    fieldID: 2,
+                    label: "Answer 03",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 03",
+                  },
+                ],
+              },
+
+              {
+                columnID: 2,
+                children: [
+                  {
+                    fieldID: 2,
+                    label: "Answer 02",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 02",
+                  },
+                  {
+                    fieldID: 2,
+                    label: "Answer 04",
+                    type: "type",
+                    id: "id",
+                    placeHolder: "Enter answer 04",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ]);
   };
+
   return (
     <div className=' w-full h-full flex p-4'>
       <FormBuilder formDef={formDefBuilder.getComponent()} />

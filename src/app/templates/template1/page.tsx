@@ -15,12 +15,22 @@ import CreateQuestion from "@/components/PopUps/create-questions";
 
 function Page() {
   const [stepNumber, setStepNumber] = useState(0);
+  const [isCreatedManual, setIsCreatedManual] = useState(false);
+
+  const handleManualSave = () => {
+    setIsCreatedManual(true);
+  };
+
   const handleNext = () => {
     let newStepNumber = stepNumber;
     if (stepNumber <= 3) {
       newStepNumber++;
     }
     setStepNumber(newStepNumber);
+  };
+
+  const handleUndo = () => {
+    setIsCreatedManual(false);
   };
 
   return (
@@ -154,22 +164,51 @@ function Page() {
               Time to create the questions
             </h2>
             <p className='text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300'>
-              Provide questions and there ansers here
+              Provide questions and there answers here
             </p>
 
-            <div className=' w-full  flex flex-col justify-center items-center gap-3 my-10'>
-              <p className=' text-black text-center'>
-                You can create your own questions here
-              </p>
-              <FullScreenDialog title='Create' child={<CreateQuestion />} />
-            </div>
+            {isCreatedManual ? (
+              <div className='flex h-full'>
+                <p className=' text-black my-auto'>
+                  Questions are ready to be submitted
+                </p>
+                <Button
+                  className='bg-white hover:bg-slate-200 text-black mx-3 my-auto'
+                  variant='contained'
+                  onClick={handleUndo}
+                >
+                  Undo
+                </Button>
+                <Button className='bg-blue-600 my-auto' variant='contained'>
+                  Next
+                </Button>
+              </div>
+            ) : (
+              <>
+                <div className=' w-full  flex flex-col justify-center items-center gap-3 my-10'>
+                  <p className=' text-black text-center'>
+                    You can create your own questions here
+                  </p>
+                  <FullScreenDialog
+                    title='Create'
+                    child={<CreateQuestion />}
+                    onSubmit={handleManualSave}
+                  />
+                </div>
 
-            <div className=' w-full  flex flex-col justify-center items-center gap-3 my-4'>
-              <p className=' text-black text-center'>
-                You can automatically generate questions based on the subject
-              </p>
-              <FullScreenDialog title='Generate' child={<>aaa</>} />
-            </div>
+                <div className=' w-full  flex flex-col justify-center items-center gap-3 my-4'>
+                  <p className=' text-black text-center'>
+                    You can automatically generate questions based on the
+                    subject
+                  </p>
+                  <FullScreenDialog
+                    title='Generate'
+                    child={<>aaa</>}
+                    onSubmit={handleManualSave}
+                  />
+                </div>
+              </>
+            )}
           </div>
 
           {/* step 04*/}

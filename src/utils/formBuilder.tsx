@@ -20,7 +20,7 @@ function FormBuilder(props: { formDef: FormDefinition }) {
             <div
               key={element.columnID}
               id={`form${formdef.formId}-column${element.columnID}`}
-              className={` w-full p-2 rounded-2xl ${
+              className={` w-full p-2 rounded-2xl mt-4 ${
                 !isChild ? "border-solid border-gray-300 border-2" : ""
               }`}
             >
@@ -63,7 +63,7 @@ function FormBuilder(props: { formDef: FormDefinition }) {
   return (
     <form
       id={`form${formdef.formId}`}
-      className=' pt-[30px]'
+      className=' pt-[30px] '
       onSubmit={() => {}}
     >
       {renderFormComponents(formdef, false)}
