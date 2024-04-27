@@ -6,71 +6,14 @@ import React, { useState } from "react";
 import SimpleSnackbar from "../MIUI/snackbar";
 
 function CreateQuestion() {
-  const [questionList, setQuestionList] = useState<FormComponents[]>([
-    {
-      columnID: 1,
-      children: [
-        {
-          fieldID: 1,
-          label: "New question",
-          type: "type",
-          id: "id",
-          placeHolder: "Enter a question",
-        },
-        {
-          formId: 1,
-          formComponents: [
-            {
-              columnID: 1,
-              children: [
-                {
-                  fieldID: 2,
-                  label: "Answer 01",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 01",
-                },
-                {
-                  fieldID: 2,
-                  label: "Answer 03",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 03",
-                },
-              ],
-            },
-
-            {
-              columnID: 2,
-              children: [
-                {
-                  fieldID: 2,
-                  label: "Answer 02",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 02",
-                },
-                {
-                  fieldID: 2,
-                  label: "Answer 04",
-                  type: "type",
-                  id: "id",
-                  placeHolder: "Enter answer 04",
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ]);
+  const [questionList, setQuestionList] = useState<FormComponents[]>([]);
   const formDefBuilder = new FormDefBuilder({
     formId: 1,
     formComponents: questionList,
   });
 
   const createQuestionFormBuilder = new FormDefBuilder({
-    formId: 1,
+    formId: 2,
     formComponents: [
       {
         columnID: 1,
@@ -83,23 +26,23 @@ function CreateQuestion() {
             placeHolder: "Enter a question",
           },
           {
-            formId: 1,
+            formId: 2,
             formComponents: [
               {
                 columnID: 1,
                 children: [
                   {
-                    fieldID: 2,
+                    fieldID: 1,
                     label: "Answer 01",
                     type: "type",
-                    id: "id",
+                    id: "answer1",
                     placeHolder: "Enter answer 01",
                   },
                   {
                     fieldID: 2,
                     label: "Answer 03",
                     type: "type",
-                    id: "id",
+                    id: "answer2",
                     placeHolder: "Enter answer 03",
                   },
                 ],
@@ -109,17 +52,17 @@ function CreateQuestion() {
                 columnID: 2,
                 children: [
                   {
-                    fieldID: 2,
+                    fieldID: 1,
                     label: "Answer 02",
                     type: "type",
-                    id: "id",
+                    id: "answer2",
                     placeHolder: "Enter answer 02",
                   },
                   {
                     fieldID: 2,
                     label: "Answer 04",
                     type: "type",
-                    id: "id",
+                    id: "answer4",
                     placeHolder: "Enter answer 04",
                   },
                 ],
@@ -136,6 +79,7 @@ function CreateQuestion() {
       ...questionList,
       {
         columnID: 1,
+        key : questionList.length+1,
         children: [
           {
             fieldID: 1,
@@ -154,14 +98,14 @@ function CreateQuestion() {
                     fieldID: 2,
                     label: "Answer 01",
                     type: "type",
-                    id: "id",
+                    id: "answer1",
                     placeHolder: "Enter answer 01",
                   },
                   {
                     fieldID: 2,
                     label: "Answer 03",
                     type: "type",
-                    id: "id",
+                    id: "answer3",
                     placeHolder: "Enter answer 03",
                   },
                 ],
@@ -174,14 +118,14 @@ function CreateQuestion() {
                     fieldID: 2,
                     label: "Answer 02",
                     type: "type",
-                    id: "id",
+                    id: "answer2",
                     placeHolder: "Enter answer 02",
                   },
                   {
                     fieldID: 2,
                     label: "Answer 04",
                     type: "type",
-                    id: "id",
+                    id: "answer4",
                     placeHolder: "Enter answer 04",
                   },
                 ],

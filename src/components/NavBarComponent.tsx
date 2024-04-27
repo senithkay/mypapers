@@ -1,7 +1,8 @@
-import { cn } from "@/utils";
+'use client';
 import { useState } from "react";
 import { Menu, MenuItem, ProductItem, HoveredLink } from "./navbar-component";
 import Button from "@mui/material/Button";
+import {cn} from "@/utils/functions";
 
 export function NavbarComponent({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
@@ -52,7 +53,7 @@ export function NavbarComponent({ className }: { className?: string }) {
             <HoveredLink href='/interface-design'>Saved Templates</HoveredLink>
           </div>
         </MenuItem>
-        <MenuItem setActive={setActive} active={active} item='Help'>
+        <MenuItem setActive={setActive} active={active} item='Company'>
           <div className='flex flex-col space-y-4 text-sm'>
             <HoveredLink href='/hobby'>About</HoveredLink>
             <HoveredLink href='/individual'>Contact US</HoveredLink>

@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import {wait} from "@/utils/functions";
 
 const transition = {
   type: "spring",
@@ -69,7 +70,9 @@ export const Menu = ({
 }) => {
   return (
     <nav
-      onMouseLeave={() => setActive(null)} // resets the state
+      onMouseLeave={async () => {
+        setActive(null)
+      }} // resets the state
       className='relative rounded-full boder border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4  '
     >
       {children}

@@ -18,8 +18,8 @@ function FormBuilder(props: { formDef: FormDefinition }) {
         {formdef.formComponents.map((element) => {
           return (
             <div
-              key={element.columnID}
-              id={`form${formdef.formId}-column${element.columnID}`}
+              key={`f${formdef.formId}-k${element.key}`}
+              id={`form${formdef.formId}-key${element.key}`}
               className={` w-full p-2 rounded-2xl mt-4 ${
                 !isChild ? "border-solid border-gray-300 border-2" : ""
               }`}
@@ -28,7 +28,7 @@ function FormBuilder(props: { formDef: FormDefinition }) {
                 if (FormHelper.isField(columnChild)) {
                   const child = columnChild as Field;
                   return (
-                    <div key={child.id}>
+                    <div key={`form${formdef.formId}-column${element.key}-child${child.id}`}>
                       <LabelInputContainer>
                         <Label
                           htmlFor={child.id}
@@ -37,7 +37,7 @@ function FormBuilder(props: { formDef: FormDefinition }) {
                           {child.label}
                         </Label>
                         <Input
-                          id={child.id}
+                          id={`f${formdef.formId}-c${element.columnID}-f${child.id}`}
                           placeholder={child.placeHolder}
                           type={child.type}
                         />

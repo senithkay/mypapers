@@ -5,6 +5,7 @@ export class FormDefinition implements ColumnChild {
 
 export class FormComponents {
   columnID: number = 0;
+  key : number = 0;
   children: ColumnChild[] = [];
 }
 
@@ -45,6 +46,9 @@ export class FormComponentBuilder {
       let formComponent: FormComponents = new FormComponents();
       if (element.columnID !== undefined) {
         formComponent.columnID = element.columnID;
+      }
+      if (element.key !== undefined) {
+        formComponent.key = element.key;
       }
       if (element.children !== undefined) {
         const columnChildBuilder: ColumnChildBuilder = new ColumnChildBuilder(
